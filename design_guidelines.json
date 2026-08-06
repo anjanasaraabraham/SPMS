@@ -1,0 +1,142 @@
+{
+  "theme": "light",
+  "typography": {
+    "heading_font": "IBM Plex Sans",
+    "body_font": "Inter",
+    "hierarchy": {
+      "h1": "text-3xl sm:text-4xl font-semibold tracking-tight text-slate-900",
+      "h2": "text-2xl sm:text-3xl font-medium tracking-tight text-slate-800",
+      "h3": "text-xl sm:text-2xl font-medium text-slate-800",
+      "h4": "text-lg font-medium text-slate-700",
+      "body": "text-sm text-slate-600 leading-relaxed",
+      "labels": "text-xs font-semibold uppercase tracking-wider text-slate-500"
+    },
+    "notes": "User requested Inter. Used Inter for body to meet requirement but paired with IBM Plex Sans for headings to maintain E1's anti-default rule and achieve a highly professional, SAP Fiori / ServiceNow enterprise aesthetic."
+  },
+  "colors": {
+    "background": "#FFFFFF",
+    "surface": "#F8FAFC",
+    "surface_hover": "#F1F5F9",
+    "primary": {
+      "DEFAULT": "#0052CC",
+      "hover": "#0047B3",
+      "light": "#E5EFFF",
+      "text": "#FFFFFF"
+    },
+    "success": {
+      "DEFAULT": "#10B981",
+      "light": "#D1FAE5",
+      "text": "#065F46"
+    },
+    "warning": {
+      "DEFAULT": "#F59E0B",
+      "light": "#FEF3C7",
+      "text": "#92400E"
+    },
+    "error": {
+      "DEFAULT": "#E11D48",
+      "light": "#FFE4E6",
+      "text": "#9F1239"
+    },
+    "neutral": {
+      "900": "#0F172A",
+      "800": "#1E293B",
+      "600": "#475569",
+      "400": "#94A3B8",
+      "200": "#E2E8F0",
+      "100": "#F1F5F9",
+      "50": "#F8FAFC"
+    },
+    "inventory_bins": {
+      "green": "#10B981",
+      "yellow": "#FBBF24",
+      "orange": "#F97316",
+      "red": "#EF4444"
+    }
+  },
+  "visual_enhancers": {
+    "shadows": {
+      "card": "shadow-[0_2px_10px_rgba(15,23,42,0.04)]",
+      "dropdown": "shadow-[0_8px_30px_rgba(15,23,42,0.08)]",
+      "modal": "shadow-[0_20px_40px_rgba(15,23,42,0.12)]"
+    },
+    "borders": "1px solid #E2E8F0 (border-slate-200)",
+    "radius": {
+      "card": "rounded-xl",
+      "button": "rounded-lg",
+      "input": "rounded-md"
+    },
+    "surfaces": "Minimal Glassmorphism. Use solid white backgrounds for cards, with soft shadows. Glassmorphism only for sticky top nav (backdrop-blur-md bg-white/80)."
+  },
+  "layouts": {
+    "structure": "Left sidebar (260px wide, collapsible) + Top Nav (64px high) + Main Content Area.",
+    "sidebar": "Dark or light variant. If dark, use #0F172A with #FFFFFF text. If light, use #F8FAFC with #0F172A text. Includes: Dashboard, Student Portal, Security Operations, Inventory Management, Reports, Notifications, Administration, Settings.",
+    "top_nav": "Contains Search input (Shadcn), Notifications (bell icon), Profile Dropdown, Dark Mode Toggle, and Breadcrumb.",
+    "content_spacing": "Generous padding. Use p-6 or p-8 for main content containers.",
+    "grid_system": "High Density Grid (Bento Mode B) for Executive KPI Dashboard. grid-cols-1 md:grid-cols-3 lg:grid-cols-4 with gap-6. Prioritize top-left for main KPIs."
+  },
+  "components": {
+    "buttons": "Shadcn buttons. Primary blue, secondary outline (slate-200 border, slate-700 text).",
+    "tables": "Professional Data Tables (Shadcn). Must include pagination, filtering, column sorting. Zebra striping or solid white with bottom borders.",
+    "charts": "Recharts wrapped in Shadcn chart components. Line, Pie, Donut, Area, Bar, Heat Map. Clean tooltips, subtle grid lines.",
+    "forms": "Professional Forms (Shadcn). Left-aligned labels, clear placeholder text, structured in multi-column layouts where applicable.",
+    "cards": "Dashboard Cards. White background, soft shadow, rounded-xl, 1px border. Progressive disclosure: summary on card, detail via click/modal.",
+    "specialized": {
+      "warehouse_inventory": "Grid-based visualization of racks/bins using inventory_bins color coding.",
+      "bpmn_diagram": "Use customized Flow nodes (React Flow) to represent As-Is vs To-Be processes.",
+      "kpi_cards": "Include metric, label, and trend indicator (e.g., +2.4% with green arrow)."
+    }
+  },
+  "motion": {
+    "hover": "Subtle translate-y-[-2px] on interactive cards. Color transitions (duration-200) on buttons.",
+    "loading": "Skeleton loaders (Shadcn) for data-heavy sections instead of spinners.",
+    "page_transitions": "Framer Motion fade-in (opacity 0 to 1, y: 10 to 0) for dashboard widgets (staggered)."
+  },
+  "accessibility": {
+    "contrast": "Text must meet APCA/WCAG AA minimums. No light gray text on white background.",
+    "focus": "focus:ring-2 focus:ring-primary/50 focus:outline-none on all interactive elements.",
+    "testing": "All interactive and key informational elements MUST include a data-testid attribute (e.g., data-testid='sidebar-nav-inventory')."
+  },
+  "media": {
+    "icons": "Use @phosphor-icons/react (duotone for sidebar/empty states, regular for dense UI) OR lucide-react. Keep stroke widths consistent.",
+    "illustrations": "NO playful illustrations. Use abstract geometric patterns or high-quality professional photography if needed."
+  },
+  "image_urls": [
+    {
+      "url": "https://images.pexels.com/photos/38197025/pexels-photo-38197025.jpeg",
+      "category": "Avatar",
+      "description": "Professional headshot for Executive/Admin user profile."
+    },
+    {
+      "url": "https://images.pexels.com/photos/37148308/pexels-photo-37148308.jpeg",
+      "category": "Avatar",
+      "description": "Professional headshot for Security/Warehouse staff profile."
+    },
+    {
+      "url": "https://images.pexels.com/photos/12706241/pexels-photo-12706241.jpeg",
+      "category": "Background / Empty State",
+      "description": "Clean, modern warehouse racks for Inventory module hero or empty state background."
+    }
+  ],
+  "instructions_to_main_agent": [
+    "Strictly generate .js and .jsx files. DO NOT USE TypeScript (.tsx).",
+    "Use standard Tailwind CSS classes. Adhere to the defined color palette (Primary Blue #0052CC).",
+    "Emulate SAP Fiori / ServiceNow enterprise aesthetics. Avoid consumer-facing app looks.",
+    "Build the UI heavily relying on Shadcn UI primitives (Tables, Dialogs, Selects, Cards, Forms).",
+    "Use Recharts for all analytical widgets (Line, Pie, Donut, Area, Bar). Build a Heat Map for warehouse density.",
+    "Create 4 distinct role-based views in the frontend routing/layout structure.",
+    "Implement the Student Parcel Portal with OTP/QR visual placeholders.",
+    "Implement the Security Operations workflow for receiving parcels.",
+    "The warehouse inventory screen MUST visualize physical racks and bins with the 4-color status codes.",
+    "For the BPMN process diagram, utilize React Flow if possible, or build an SVG/HTML-based flowchart.",
+    "Do NOT use transparent backgrounds for dropdowns or modals. Always use solid white.",
+    "Add 'data-testid' to all buttons, links, inputs, and major layout containers."
+  ],
+  "UNIVERSAL GUIDELINES FOR MAIN AGENT": [
+    "Do not converge toward generic outputs. Use the defined subtle shadows and precise typography to create a premium feel.",
+    "Never center-align paragraphs or data tables.",
+    "Use sonner for toasts notifications.",
+    "Do not use AI assistant emoji characters for icons. Use Phosphor Icons or Lucide.",
+    "Ensure generous padding inside cards (p-6) so content does not collide with borders."
+  ]
+}
