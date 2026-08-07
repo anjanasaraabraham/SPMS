@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
-const LOGO_URL = "https://customer-assets-eiarnc6j.emergentagent.net/job_spms-inventory-hub/artifacts/wsl44i71_image.png";
+const LOGO_URL = "https://customer-assets-eiarnc6j.emergentagent.net/job_spms-inventory-hub/artifacts/lxkaa9dr_GLIMG%20Logo.png";
 
 // Role-based nav per user's spec
 const NAV_BY_ROLE = {
@@ -70,8 +70,8 @@ export default function DashboardLayout() {
         <div className="h-16 flex items-center px-4 lg:px-6 gap-4">
           {/* Logo + GLIMG */}
           <div className="flex items-center gap-3 shrink-0">
-            <div className="bg-white rounded-md p-1.5 shadow-sm">
-              <img src={LOGO_URL} alt="Great Lakes Gurgaon" className="h-10 w-auto object-contain" />
+            <div className="bg-white rounded-md p-1 shadow-sm">
+              <img src={LOGO_URL} alt="Great Lakes Gurgaon" className="h-11 w-auto object-contain" />
             </div>
             <div className="hidden md:block">
               <div className="text-xl font-bold tracking-wider leading-tight">GLIMG</div>

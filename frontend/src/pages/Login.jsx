@@ -12,7 +12,7 @@ const ROLES = [
   { id: "admin", label: "Administrator", email: "admin@digicampus.edu", password: "admin123", icon: UserCog },
 ];
 
-const LOGO_URL = "https://customer-assets-eiarnc6j.emergentagent.net/job_spms-inventory-hub/artifacts/wsl44i71_image.png";
+const LOGO_URL = "https://customer-assets-eiarnc6j.emergentagent.net/job_spms-inventory-hub/artifacts/lxkaa9dr_GLIMG%20Logo.png";
 
 export default function Login() {
   const { login } = useAuth();
@@ -70,22 +70,19 @@ export default function Login() {
       <div className="min-h-screen flex items-center justify-center p-4">
         <div className="w-full max-w-md">
           {/* Logo above card */}
-          <div className="flex flex-col items-center mb-4">
-            <div className="bg-white rounded-2xl shadow-xl p-4 border border-white/50">
-              <img src={LOGO_URL} alt="Great Lakes Gurgaon" className="h-20 w-auto object-contain" />
-            </div>
+          <div className="flex flex-col items-center mb-5">
+            <img src={LOGO_URL} alt="Great Lakes Gurgaon" className="h-24 w-auto object-contain drop-shadow-lg" />
           </div>
 
           {/* Login card */}
           <div className="glass-card rounded-2xl p-8">
             <div className="text-center mb-6">
-              <div className="text-[10px] uppercase tracking-[0.2em] text-slate-500 mb-2">Welcome to</div>
-              <h1 className="text-2xl font-semibold text-slate-900 leading-tight">
-                Student Parcel<br />Management System
+              <h1 className="text-3xl font-bold text-slate-900 leading-tight tracking-tight">
+                Welcome to Digiicampus
               </h1>
-              <div className="text-xs text-slate-500 mt-2">Integrated with Digiicampus</div>
+              <div className="text-sm font-medium text-slate-700 mt-2">Student Parcel Management System</div>
+              <div className="text-xs text-slate-500 mt-3">Sign in to continue</div>
               <div className="mt-4 h-px bg-slate-200" />
-              <div className="text-sm font-medium text-slate-700 mt-4">Sign in to continue</div>
             </div>
 
             {/* Role selector */}
