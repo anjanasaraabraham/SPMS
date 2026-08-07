@@ -22,23 +22,33 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [showPw, setShowPw] = useState(false);
   const [busy, setBusy] = useState(false);
+  const [errors, setErrors] = useState({});
+
+  const validate = () => {
+    const e = {};
+    if (!role) e.role = "Please select a role.";
+    if (!email.trim()) e.email = "Please enter your email.";
+    if (!password) e.password = "Please enter your password.";
+    setErrors(e);
+    return Object.keys(e).length === 0;
+  };
 
   const submit = async (e) => {
     e?.preventDefault();
-    if (!role) { toast.error("Please select a role."); return; }
-    if (!email) { toast.error("Please enter your email."); return; }
-    if (!password) { toast.error("Please enter your password."); return; }
+    if (!validate()) return;
     setBusy(true);
     try {
-      const user = await login(email, password);
+      const user = await login(email.trim(), password);
       if (user.role !== role) {
-        toast.warning(`Signed in but selected role differs (account is ${user.role}).`);
+        toast.warning(`Signed in — note: account role is "${user.role}", not "${role}".`);
       } else {
         toast.success(`Welcome, ${user.name}`);
       }
       nav("/");
     } catch (err) {
-      toast.error(err?.response?.data?.detail || "Invalid credentials");
+      const msg = err?.response?.data?.detail || "Invalid email or password";
+      setErrors({ submit: typeof msg === "string" ? msg : "Invalid credentials" });
+      toast.error(typeof msg === "string" ? msg : "Invalid credentials");
     } finally { setBusy(false); }
   };
 
@@ -46,6 +56,7 @@ export default function Login() {
     setRole(r.id);
     setEmail(r.email);
     setPassword(r.password);
+    setErrors({});
     toast.info(`${r.label} demo prefilled. Click Sign in.`);
   };
 
@@ -87,12 +98,14 @@ export default function Login() {
                     <button
                       key={r.id}
                       type="button"
-                      onClick={() => setRole(r.id)}
+                      onClick={() => { setRole(r.id); setErrors({ ...errors, role: undefined }); }}
                       data-testid={`role-${r.id}`}
                       className={`p-3 rounded-lg border-2 transition-all flex flex-col items-center gap-1.5 ${
                         active
                           ? "border-[#D34449] bg-[#FDECED] text-[#D34449] shadow-sm"
-                          : "border-slate-200 bg-white/70 text-slate-600 hover:border-slate-300"
+                          : errors.role
+                            ? "border-rose-300 bg-rose-50/60 text-slate-600 hover:border-rose-400"
+                            : "border-slate-200 bg-white/70 text-slate-600 hover:border-slate-300"
                       }`}
                     >
                       <r.icon className="w-5 h-5" />
@@ -101,19 +114,25 @@ export default function Login() {
                   );
                 })}
               </div>
+              {errors.role && (
+                <div className="mt-2 text-xs text-rose-600 flex items-center gap-1" data-testid="error-role">
+                  <span className="inline-block w-1 h-1 bg-rose-600 rounded-full" /> {errors.role}
+                </div>
+              )}
             </div>
 
-            <form onSubmit={submit} className="space-y-4" data-testid="login-form">
+            <form onSubmit={submit} className="space-y-4" data-testid="login-form" noValidate>
               <div>
                 <label className="text-[11px] font-semibold uppercase tracking-wider text-slate-600">Email / Registration ID</label>
                 <Input
                   data-testid="login-email"
                   type="email"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => { setEmail(e.target.value); if (errors.email) setErrors({ ...errors, email: undefined }); }}
                   placeholder="you@digicampus.edu"
-                  className="mt-1.5 h-11 bg-white border-slate-200"
+                  className={`mt-1.5 h-11 bg-white ${errors.email ? "border-rose-400 focus-visible:ring-rose-200" : "border-slate-200"}`}
                 />
+                {errors.email && <div className="mt-1 text-xs text-rose-600" data-testid="error-email">{errors.email}</div>}
               </div>
               <div>
                 <label className="text-[11px] font-semibold uppercase tracking-wider text-slate-600">Password</label>
@@ -122,20 +141,28 @@ export default function Login() {
                     data-testid="login-password"
                     type={showPw ? "text" : "password"}
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) => { setPassword(e.target.value); if (errors.password) setErrors({ ...errors, password: undefined }); }}
                     placeholder="••••••••"
-                    className="h-11 bg-white border-slate-200 pr-10"
+                    className={`h-11 bg-white pr-10 ${errors.password ? "border-rose-400 focus-visible:ring-rose-200" : "border-slate-200"}`}
                   />
                   <button type="button" onClick={() => setShowPw(!showPw)} className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
                     {showPw ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                   </button>
                 </div>
+                {errors.password && <div className="mt-1 text-xs text-rose-600" data-testid="error-password">{errors.password}</div>}
               </div>
+
+              {errors.submit && (
+                <div className="p-3 rounded-md bg-rose-50 border border-rose-200 text-xs text-rose-700" data-testid="error-submit">
+                  {errors.submit}
+                </div>
+              )}
+
               <Button
                 data-testid="login-submit"
                 type="submit"
                 disabled={busy}
-                className="w-full h-11 bg-[#D34449] hover:bg-[#B93A3F] text-white font-medium shadow-sm rounded-lg"
+                className="w-full h-11 bg-[#D34449] hover:bg-[#B93A3F] text-white font-medium shadow-sm rounded-lg disabled:opacity-60"
               >
                 {busy ? "Signing in…" : "Sign in to Digiicampus"}
               </Button>
