@@ -169,10 +169,6 @@ export default function DashboardLayout() {
               </NavLink>
             ))}
           </nav>
-
-          <div className="p-4 text-[10px] text-slate-400 text-center border-t border-slate-100 mt-4">
-            Integrated with Digiicampus
-          </div>
         </aside>
 
         {/* Main content */}
