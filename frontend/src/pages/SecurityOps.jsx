@@ -98,7 +98,7 @@ export default function SecurityOps() {
             <div className="md:col-span-2">
               <Label className="text-xs font-semibold uppercase tracking-wider text-slate-600">Student Roll Number</Label>
               <div className="flex gap-2 mt-2">
-                <Input data-testid="roll-input" value={form.student_roll} onChange={(e) => setForm({...form, student_roll: e.target.value.toUpperCase()})} placeholder="CS2024001" />
+                <Input data-testid="roll-input" value={form.student_roll} onChange={(e) => setForm({...form, student_roll: e.target.value.toUpperCase()})} placeholder="P2622001" />
                 <Button type="button" variant="outline" onClick={findStudent} data-testid="find-student-btn">
                   <Search className="w-4 h-4 mr-1.5" /> Verify
                 </Button>
