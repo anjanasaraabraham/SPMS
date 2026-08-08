@@ -80,7 +80,6 @@ export default function Login() {
               <h1 className="text-3xl font-bold text-slate-900 leading-tight tracking-tight">
                 Welcome to Digiicampus
               </h1>
-              <div className="text-sm font-medium text-slate-700 mt-2">Student Parcel Management System</div>
               <div className="text-xs text-slate-500 mt-3">Sign in to continue</div>
               <div className="mt-4 h-px bg-slate-200" />
             </div>
