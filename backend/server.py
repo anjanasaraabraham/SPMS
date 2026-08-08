@@ -435,26 +435,38 @@ async def seed():
                 "created_at": now_iso()
             })
 
-    # Seed students
-    existing_students = await db.users.count_documents({"role": "student"})
-    if existing_students < 500:
-        # Add the featured student first
-        if not await db.users.find_one({"email": "student@digicampus.edu"}):
-            await db.users.insert_one({
-                "id": str(uuid.uuid4()),
-                "email": "student@digicampus.edu",
-                "password_hash": hash_password("password123"),
-                "name": "Aarav Sharma",
-                "role": "student",
-                "roll_number": "CS2024001",
-                "department": "Computer Science",
-                "created_at": now_iso()
-            })
+    # Seed students — PGDM roll format P2622001..P2622080; Aarav = P2622010
+    NEW_ROLL_PREFIX = "P26220"
+    FEATURED_ROLL = "P2622010"
+
+    # Migration: if any student still uses the OLD roll format, wipe and reseed cleanly
+    old_format_exists = await db.users.find_one({"role": "student", "roll_number": {"$regex": "^(CS|EE|ME|CE|EC)2024"}})
+    student_count = await db.users.count_documents({"role": "student"})
+
+    if old_format_exists or student_count != 80:
+        # Wipe all students and all parcels — parcels will be reseeded with the new student pool
+        await db.users.delete_many({"role": "student"})
+        await db.parcels.delete_many({})
+        # Reset bin occupancy
+        await db.bins.update_many({}, {"$set": {"occupied": False}})
+
+        # Featured student
+        await db.users.insert_one({
+            "id": str(uuid.uuid4()),
+            "email": "student@digicampus.edu",
+            "password_hash": hash_password("password123"),
+            "name": "Aarav Sharma",
+            "role": "student",
+            "roll_number": FEATURED_ROLL,
+            "department": "PGDM",
+            "created_at": now_iso()
+        })
         bulk = []
-        for i in range(2, 501):
+        for i in range(1, 81):
+            roll = f"{NEW_ROLL_PREFIX}{i:02d}"
+            if roll == FEATURED_ROLL:
+                continue
             fn = random.choice(FIRST_NAMES); ln = random.choice(LAST_NAMES)
-            dept = random.choice(["CS", "EE", "ME", "CE", "EC"])
-            roll = f"{dept}2024{i:03d}"
             bulk.append({
                 "id": str(uuid.uuid4()),
                 "email": f"student{i}@digicampus.edu",
@@ -462,7 +474,7 @@ async def seed():
                 "name": f"{fn} {ln}",
                 "role": "student",
                 "roll_number": roll,
-                "department": dept,
+                "department": "PGDM",
                 "created_at": now_iso()
             })
         if bulk:
@@ -496,7 +508,7 @@ async def seed():
 
     # Seed parcels
     if await db.parcels.count_documents({}) < 1200:
-        students = await db.users.find({"role": "student"}).to_list(500)
+        students = await db.users.find({"role": "student"}).to_list(200)
         security_staff = await db.users.find_one({"role": "security"})
         racks = await db.racks.find({}).to_list(20)
         rack_map = {"small": ["A1", "A2"], "medium": ["B1", "B2"], "large": ["C1", "C2"], "fragile": ["E1"], "priority": ["LOCKER1"]}
