@@ -179,9 +179,6 @@ export default function SecurityOps() {
               <ScanLine className="w-4 h-4 mr-1.5" />
               {verify.isPending ? "Verifying…" : "Verify & Release"}
             </Button>
-            <p className="text-[11px] text-slate-500 leading-relaxed">
-              Tip: click any recent parcel below to autofill this form.
-            </p>
           </div>
         </Card>
       </div>
