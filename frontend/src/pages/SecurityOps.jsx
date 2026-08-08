@@ -187,7 +187,6 @@ export default function SecurityOps() {
       <Card className="dc-card p-0 overflow-hidden">
         <div className="p-6 border-b border-slate-200">
           <h3 className="font-semibold text-slate-900">Recent Transactions</h3>
-          <p className="text-xs text-slate-500 mt-1">Click a row to load into verification panel</p>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
