@@ -4,6 +4,7 @@ ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
 from fastapi import FastAPI, APIRouter, HTTPException, Depends, Request, Query
+from fastapi.responses import FileResponse
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 import os
@@ -397,6 +398,17 @@ async def report(report_type: str, user: dict = Depends(get_current_user)):
     return {"data": docs}
 
 app.include_router(api)
+
+@app.get("/api/export/students.xlsx")
+async def export_students_xlsx():
+    path = "/app/SPMS_Students_Dataset.xlsx"
+    if not os.path.exists(path):
+        raise HTTPException(404, "Dataset not generated yet")
+    return FileResponse(
+        path,
+        media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        filename="SPMS_Students_Dataset.xlsx",
+    )
 
 app.add_middleware(
     CORSMiddleware,
