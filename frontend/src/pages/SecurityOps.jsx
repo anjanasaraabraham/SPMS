@@ -28,8 +28,15 @@ export default function SecurityOps() {
 
   const [verifyId, setVerifyId] = useState("");
   const [verifyOtp, setVerifyOtp] = useState("");
+  const [rollFilter, setRollFilter] = useState("");
 
-  const { data: recent } = useQuery({ queryKey: ["recent-ops"], queryFn: async () => (await api.get("/parcels?limit=10")).data });
+  const { data: recent } = useQuery({
+    queryKey: ["recent-ops", rollFilter],
+    queryFn: async () => {
+      const params = rollFilter.trim() ? `?student_roll=${rollFilter.trim()}&limit=100` : "?limit=10";
+      return (await api.get(`/parcels${params}`)).data;
+    },
+  });
 
   const findStudent = async () => {
     if (!form.student_roll) { toast.error("Enter roll number"); return; }
@@ -185,8 +192,18 @@ export default function SecurityOps() {
 
       {/* Recent transactions */}
       <Card className="dc-card p-0 overflow-hidden">
-        <div className="p-6 border-b border-slate-200">
+        <div className="p-6 border-b border-slate-200 flex flex-wrap items-center justify-between gap-3">
           <h3 className="font-semibold text-slate-900">Recent Transactions</h3>
+          <div className="relative w-full sm:w-72">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+            <Input
+              data-testid="roll-filter-input"
+              value={rollFilter}
+              onChange={(e) => setRollFilter(e.target.value.toUpperCase())}
+              placeholder="Search by Roll Number (e.g. P2622010)"
+              className="pl-9 h-9 text-sm"
+            />
+          </div>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
@@ -195,22 +212,43 @@ export default function SecurityOps() {
                 <th className="px-6 py-3 font-semibold">Tracking</th>
                 <th className="px-6 py-3 font-semibold">Student</th>
                 <th className="px-6 py-3 font-semibold">Location</th>
-                <th className="px-6 py-3 font-semibold">OTP</th>
                 <th className="px-6 py-3 font-semibold">Status</th>
                 <th className="px-6 py-3 font-semibold">Received</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
-              {(recent || []).map(p => (
-                <tr key={p.id} className="hover:bg-slate-50 cursor-pointer" onClick={() => { setVerifyId(p.id); setVerifyOtp(p.otp); }}>
-                  <td className="px-6 py-3 font-mono text-xs">{p.tracking_number}</td>
-                  <td className="px-6 py-3">{p.student_name}</td>
-                  <td className="px-6 py-3 text-slate-600">{p.rack_code} / {p.bin_code}</td>
-                  <td className="px-6 py-3 font-mono text-xs">{p.otp}</td>
-                  <td className="px-6 py-3"><StatusBadge status={p.status} /></td>
-                  <td className="px-6 py-3 text-xs text-slate-500">{new Date(p.arrival_ts).toLocaleString()}</td>
-                </tr>
-              ))}
+              {(() => {
+                const all = recent || [];
+                let rows;
+                if (rollFilter.trim()) {
+                  const forStudent = all.filter(p => (p.student_roll || "").toUpperCase() === rollFilter.trim());
+                  const ready = forStudent.filter(p => p.status === "ready");
+                  rows = ready.length > 0 ? ready : forStudent;
+                } else {
+                  rows = all;
+                }
+                if (rows.length === 0) {
+                  return (
+                    <tr><td colSpan={5} className="px-6 py-8 text-center text-sm text-slate-500">
+                      {rollFilter.trim() ? `No parcels found for ${rollFilter.trim()}` : "No transactions yet"}
+                    </td></tr>
+                  );
+                }
+                return rows.map(p => (
+                  <tr
+                    key={p.id}
+                    data-testid={`txn-row-${p.id}`}
+                    className="hover:bg-[#FDECED] cursor-pointer"
+                    onClick={() => { setVerifyId(p.id); setVerifyOtp(""); toast.info(`Parcel selected — ask student for OTP`); }}
+                  >
+                    <td className="px-6 py-3 font-mono text-xs">{p.tracking_number}</td>
+                    <td className="px-6 py-3">{p.student_name} <span className="text-slate-400 text-xs">• {p.student_roll}</span></td>
+                    <td className="px-6 py-3 text-slate-600">{p.rack_code} / {p.bin_code}</td>
+                    <td className="px-6 py-3"><StatusBadge status={p.status} /></td>
+                    <td className="px-6 py-3 text-xs text-slate-500">{new Date(p.arrival_ts).toLocaleString()}</td>
+                  </tr>
+                ));
+              })()}
             </tbody>
           </table>
         </div>
