@@ -1,0 +1,419 @@
+{
+  "project_name": "Anjana Sara Abraham - Executive Business Analysis & Transformation Portfolio",
+  "design_version": "2026.1",
+  "theme": "Dark Editorial Luxury & Tactical Precision",
+  "summary": "Award-worthy single-page portfolio for Anjana Sara Abraham, blending high-end editorial publication aesthetics with strategic consulting rigor. Features deep obsidian-navy base, balanced blue/teal/lavender/warm-ochre accents, strong left-aligned asymmetry, masked kinetic hero typography, numbered manifesto chapters, and deliberate asset segregation between real professional portraits and generative technical diagrams.",
+  "color_system": {
+    "theme_type": "dark_editorial",
+    "base_background": "#090D16",
+    "surface_elevations": {
+      "surface_base": "#090D16",
+      "surface_card": "#0E1626",
+      "surface_card_hover": "#141F36",
+      "surface_elevated_modal": "#162238",
+      "surface_subtle_border": "rgba(255, 255, 255, 0.08)",
+      "surface_highlight_border": "rgba(45, 212, 191, 0.25)"
+    },
+    "five_core_css_variables": {
+      "--bg-primary": "#090D16",
+      "--surface-card": "#0E1626",
+      "--accent-teal": "#14B8A6",
+      "--accent-lavender": "#DDD6FE",
+      "--accent-warm": "#F3E8DC"
+    },
+    "accent_roles": {
+      "strategic_blue": {
+        "hex": "#3B82F6",
+        "tailwind": "text-blue-500 bg-blue-500/10 border-blue-500/20",
+        "usage": "Primary operational tags, executive status indicators, transformation stages"
+      },
+      "precision_teal": {
+        "hex": "#14B8A6",
+        "tailwind": "text-teal-400 bg-teal-400/10 border-teal-400/30",
+        "usage": "Data analytics metrics, impact percentages, interactive hover triggers, CTA highlights"
+      },
+      "editorial_lavender": {
+        "hex": "#DDD6FE",
+        "tailwind": "text-purple-200 bg-purple-900/20 border-purple-300/20",
+        "usage": "Manifesto chapter numerals, editorial pull quotes, methodology badges"
+      },
+      "warm_parchment": {
+        "hex": "#F3E8DC",
+        "tailwind": "text-[#F3E8DC] bg-[#F3E8DC]/10 border-[#F3E8DC]/20",
+        "usage": "Primary headlines, high-contrast narrative text, author signature badge"
+      },
+      "muted_slate": {
+        "hex": "#94A3B8",
+        "tailwind": "text-slate-400",
+        "usage": "Secondary analytical text, metadata subtitles, technical labels"
+      }
+    },
+    "contrast_rules": {
+      "text_on_dark": "Minimum 4.5:1 contrast. Warm parchment #F3E8DC achieves 14.8:1 on #090D16.",
+      "interactive_elements": "Explicit hover text color required (e.g. hover:bg-teal-500 hover:text-slate-950).",
+      "forbidden_colors": ["#7351B7", "#1B93A4", "generic saturated full-screen rainbow gradients", "vibrating lime neon"]
+    }
+  },
+  "typography": {
+    "pairing_strategy": "The Old Money Tech & Editorial Strategic Director",
+    "font_families": {
+      "display_editorial": {
+        "name": "Playfair Display",
+        "google_font_import": "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap",
+        "font_family_css": "'Playfair Display', Georgia, serif",
+        "tailwind_class": "font-serif",
+        "usage": "H1 Hero titles, Chapter headings, Manifesto statements, Key quotation highlights"
+      },
+      "analytical_sans": {
+        "name": "IBM Plex Sans",
+        "font_family_css": "'IBM Plex Sans', -apple-system, sans-serif",
+        "tailwind_class": "font-sans",
+        "usage": "Body paragraphs, Navigation, Case study metrics, Technical process flows, Footnotes"
+      }
+    },
+    "banned_fonts": ["Inter", "Roboto", "Open Sans", "Lato", "Arial", "Space Grotesk"],
+    "scale_hierarchy": {
+      "h1_hero": "text-4xl sm:text-5xl lg:text-6xl font-serif font-normal tracking-tight text-[#F3E8DC] leading-[1.08]",
+      "h2_chapter": "text-2xl sm:text-3xl lg:text-4xl font-serif font-medium tracking-tight text-white leading-snug",
+      "h3_subheading": "text-xl sm:text-2xl font-sans font-medium text-slate-100 tracking-tight",
+      "h4_card": "text-lg sm:text-xl font-sans font-semibold text-white",
+      "body_main": "text-base sm:text-lg font-sans font-normal text-slate-300 leading-relaxed",
+      "body_compact": "text-sm font-sans text-slate-400 leading-normal",
+      "overlines_labels": "text-xs font-sans font-semibold uppercase tracking-[0.2em] text-teal-400",
+      "numerals_stat": "text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-[#F3E8DC]"
+    }
+  },
+  "layout_and_grid": {
+    "strategy": "Strong Left-Aligned Asymmetric Swiss Grid with Fixed/Sticky Metadata Rail",
+    "desktop_composition": {
+      "left_anchor_column": "col-span-12 lg:col-span-4 sticky top-24 self-start space-y-8 pr-6 border-r-0 lg:border-r border-white/10",
+      "right_content_canvas": "col-span-12 lg:col-span-8 pl-0 lg:pl-10 space-y-24",
+      "container_max_width": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20"
+    },
+    "spacing_philosophy": {
+      "section_gap": "space-y-28 lg:space-y-40",
+      "card_internal_padding": "p-6 sm:p-8 lg:p-10",
+      "border_padding_safety": "All bordered containers must feature minimal p-6 to prevent visual boundary collision"
+    },
+    "mobile_behavior": {
+      "stacking": "Single column flow (grid-cols-1), sticky rail transforms into collapsible top bar or quick-chapter floating pill",
+      "max_image_height": "max-h-[70vh] w-full object-cover rounded-xl"
+    }
+  },
+  "kinetic_motion_and_interactions": {
+    "hero_reveal": {
+      "type": "Masked line-by-line slide up reveal",
+      "technology": "Framer Motion",
+      "animation_spec": {
+        "container_variants": "staggerChildren: 0.12, delayChildren: 0.2",
+        "line_mask": "overflow-hidden inline-block",
+        "line_motion": "initial: { y: '110%', opacity: 0 }, animate: { y: 0, opacity: 1, transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1] } }"
+      }
+    },
+    "editorial_marquee": {
+      "type": "Slow editorial text ribbon",
+      "package": "react-fast-marquee or CSS keyframe translate3d",
+      "speed": 22,
+      "style": "bg-[#0E1626]/80 backdrop-blur-md border-y border-white/10 py-4 text-xs sm:text-sm font-sans tracking-[0.25em] uppercase text-purple-200/80",
+      "content": "ENTERPRISE TRANSFORMATION • VALUE STREAM OPTIMIZATION • PREDICTIVE ANALYTICS • CHANGE MANAGEMENT • EXECUTIVE ALIGNMENT • PROCESS GOVERNANCE • KPI & OKR ARCHITECTURES •"
+    },
+    "scroll_and_hover": {
+      "chapter_spy": "IntersectionObserver or Framer Motion useScroll highlighting active manifesto chapter (01 to 05)",
+      "interactive_cards": "transition: border-color 0.3s ease, transform 0.3s ease; hover:-translate-y-1 hover:border-teal-400/50 hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]",
+      "cta_buttons": "Pill & sharp architectural fusion button with subtle glowing inner stroke"
+    },
+    "accessibility_motion": "Wrap animations with prefers-reduced-motion fallback ensuring instant opacity fade for accessibility compliance."
+  },
+  "sections_and_narrative_architecture": [
+    {
+      "order": 1,
+      "section_id": "hero",
+      "title": "Kinetic Editorial Hero",
+      "component_name": "HeroKinetic",
+      "content_focus": "Executive statement of transformation leadership: bridging quantitative rigor and operational execution for Fortune 500 & high-growth enterprises.",
+      "layout": "Asymmetric split with primary 7-column headline and 5-column live status / capability index card",
+      "asset_type": "Real Professional Portrait (Profile Sidecar Card) + Generative SVG Coordinates Grid",
+      "key_elements": [
+        "Masked line-by-line reveal heading",
+        "Real executive portrait in stylized deep-navy frame",
+        "Quick engagement CTA button ('Schedule Strategic Consultation')",
+        "Immediate credibility indicators (Years of Transformation Experience, Millions in Process Efficiency Unlocked)"
+      ],
+      "data_testids": [
+        "hero-section",
+        "hero-heading",
+        "hero-cta-consultation",
+        "hero-executive-card"
+      ]
+    },
+    {
+      "order": 2,
+      "section_id": "editorial-ribbon",
+      "title": "Slow Editorial Marquee",
+      "component_name": "EditorialMarquee",
+      "content_focus": "Core domain proficiencies running continuously with calm momentum.",
+      "layout": "Full bleed edge-to-edge subtle ribbon",
+      "asset_type": "Typographic Marquee",
+      "data_testids": [
+        "editorial-marquee-strip"
+      ]
+    },
+    {
+      "order": 3,
+      "section_id": "manifesto",
+      "title": "Numbered Transformation Manifesto (Chapters 01 - 04)",
+      "component_name": "ManifestoChapters",
+      "content_focus": "Anjana's 4-pillar philosophy on Business Analysis, Architecture, and Change Leadership",
+      "chapters": [
+        {
+          "number": "01",
+          "tag": "DIAGNOSTIC RIGOR",
+          "headline": "Root Causes Over Symptomatic Patches",
+          "description": "Every enterprise friction point stems from misaligned incentives or fragmented data silos. Real transformation starts with forensic process archaeology before single lines of code or organizational reshuffles occur."
+        },
+        {
+          "number": "02",
+          "tag": "DATA AS ARCHITECTURE",
+          "headline": "Turning Telemetry Into Executive Decision Velocity",
+          "description": "Analytics are useless without decision velocity. We build semantic data models and real-time operational telemetry that empower C-suite leaders to act with statistical confidence."
+        },
+        {
+          "number": "03",
+          "tag": "HUMAN-SYSTEM COHESION",
+          "headline": "Change Management is Friction Elimination",
+          "description": "The best technical architecture fails if cross-functional teams reject the workflow. Sustainable transformation requires human-centered change frameworks where tools amplify talent rather than encumber it."
+        },
+        {
+          "number": "04",
+          "tag": "MEASURABLE ALPHA",
+          "headline": "Governance Built on Defensible ROI",
+          "description": "Transformation is measured in basis points, cycle time reductions, and operational margin expansion. We enforce transparent governance loops with quantitative proof at every sprint."
+        }
+      ],
+      "layout": "Asymmetric Tetris grid with large chapter numerals (#DDD6FE), editorial headers (#F3E8DC), and contextual metric badges",
+      "asset_type": "Generative Abstract Graphic Assets (SVG Transformation Graphs, System Node Topology Wireframes)",
+      "data_testids": [
+        "manifesto-section",
+        "manifesto-chapter-01",
+        "manifesto-chapter-02",
+        "manifesto-chapter-03",
+        "manifesto-chapter-04"
+      ]
+    },
+    {
+      "order": 4,
+      "section_id": "case-studies",
+      "title": "Strategic Case Studies & Transformation Outcomes",
+      "component_name": "CaseStudiesGrid",
+      "content_focus": "Detailed executive case studies featuring Business Problem, Diagnostic Approach, Transformation Blueprint, and Quantified Results.",
+      "projects": [
+        {
+          "id": "enterprise-fintech-analytics",
+          "title": "Global Fintech Core Transformation & Automated Reconciliation Engine",
+          "client_profile": "Tier-1 Financial Services & Payments Network",
+          "role": "Lead Business Analyst & Solution Architect",
+          "challenge": "Legacy 72-hour batch reconciliation causing $4.2M annual latency exposure and high audit failure risk across multi-currency ledgers.",
+          "solution": "Architected event-driven distributed ledger reconciliation pipeline with automated anomaly detection and executive compliance dashboard.",
+          "metrics": [
+            { "label": "Reconciliation Latency", "value": "72h → 4.2m", "change": "-99.4%" },
+            { "label": "Operational Cost Recovery", "value": "$3.8M", "change": "Annualized" },
+            { "label": "Audit Compliance", "value": "100%", "change": "Zero Citations" }
+          ],
+          "visual_asset": "Architectural modern geometry preview + dynamic interactive metric bar"
+        },
+        {
+          "id": "healthcare-supply-stream",
+          "title": "Healthcare Logistics Network Predictive Demand System",
+          "client_profile": "National Hospital Supply & Medical Device Consortium",
+          "role": "Strategic Analytics Consultant",
+          "challenge": "Siloed inventory management causing periodic sterile equipment stockouts across 42 acute care facilities during regional surges.",
+          "solution": "Designed machine-learning demand forecasting framework and integrated ERP process redesign, standardizing procurement protocols.",
+          "metrics": [
+            { "label": "Stockout Incidents", "value": "0", "change": "-100% in 18 mos" },
+            { "label": "Inventory Carrying Cost", "value": "-28%", "change": "Optimized Buffer" },
+            { "label": "Order Fulfillment Speed", "value": "2.4x", "change": "Velocity Boost" }
+          ],
+          "visual_asset": "Curated minimalist glass boardroom architectural framing + KPI grid"
+        },
+        {
+          "id": "saas-retention-transformation",
+          "title": "Enterprise B2B SaaS Churn Diagnostics & Product Analytics Overhaul",
+          "client_profile": "Series D Enterprise Workflow Platform",
+          "role": "Principal Business Transformation Lead",
+          "challenge": "Unexplained 18% gross dollar churn spike post-major enterprise product release with fragmented telemetry across sales & CS.",
+          "solution": "Unified customer journey telemetry across product events, support tickets, and renewal milestones; created early warning churn prediction model.",
+          "metrics": [
+            { "label": "Net Revenue Retention", "value": "104% → 121%", "change": "+17 bps" },
+            { "label": "Early At-Risk Detection", "value": "60 Days", "change": "Lead Time" },
+            { "label": "Customer Lifetime Value", "value": "+34%", "change": "CAGR" }
+          ],
+          "visual_asset": "Geometric grid diagram with interactive before/after metric comparison tab"
+        }
+      ],
+      "layout": "Editorial cards with sharp borders (1px border-white/10), elevated hover state, badge pills, and expandable modal / drawer for deep dive",
+      "asset_type": "Curated Architectural Imagery + Generative Process Diagrams",
+      "data_testids": [
+        "case-studies-section",
+        "case-study-card-1",
+        "case-study-card-2",
+        "case-study-card-3",
+        "case-study-expand-btn-1"
+      ]
+    },
+    {
+      "order": 5,
+      "section_id": "interactive-diagnostic-tool",
+      "title": "Strategic Maturity & Transformation Readiness Calculator",
+      "component_name": "DiagnosticCalculator",
+      "content_focus": "Interactive tool allowing prospective clients to assess their current enterprise analytics, process friction, and change readiness score with tailored recommendations.",
+      "layout": "Cardless dense control layout with sliders, custom select buttons, and dynamic radar/scorecard readout",
+      "asset_type": "Generative Interactive UI Component",
+      "data_testids": [
+        "diagnostic-calculator-section",
+        "diagnostic-slider-data-maturity",
+        "diagnostic-slider-process-friction",
+        "diagnostic-select-industry",
+        "diagnostic-score-output"
+      ]
+    },
+    {
+      "order": 6,
+      "section_id": "executive-profile",
+      "title": "Principal Perspective & Executive Credentials",
+      "component_name": "ExecutivePerspective",
+      "content_focus": "Anjana Sara Abraham's professional trajectory, advisory philosophy, technical toolkit (SQL, Python, PowerBI, Tableau, BPMN 2.0, Jira, Agile Transformation, Lean Six Sigma), and leadership ethos.",
+      "layout": "Asymmetric 5:7 split. Left side houses high-resolution portrait with duotone navy overlay; right side houses executive narrative, competency badges, and leadership timeline.",
+      "asset_type": "Real Professional Portrait (Primary Focal Treatment)",
+      "data_testids": [
+        "executive-profile-section",
+        "executive-portrait-image",
+        "executive-bio-text",
+        "toolkit-badges-container"
+      ]
+    },
+    {
+      "order": 7,
+      "section_id": "consulting-engagement",
+      "title": "Strategic Inquiry & Advisory Engagement",
+      "component_name": "ConsultingInquiry",
+      "content_focus": "Direct high-touch booking and consultation form for executive advisory, contract transformation leadership, and speaking engagements.",
+      "layout": "Minimalist high-contrast dark form with Shadcn customized Input, Select, and Textarea, validated with Sonner toast feedback upon submission.",
+      "asset_type": "Interactive Form & Scheduling Trigger",
+      "data_testids": [
+        "contact-section",
+        "contact-name-input",
+        "contact-email-input",
+        "contact-engagement-type-select",
+        "contact-message-input",
+        "contact-submit-button"
+      ]
+    }
+  ],
+  "image_and_asset_allocation": {
+    "philosophy": "Strict demarcation between Human Trust (Real Professional Photography) and Strategic Systems (Generative Code Diagrams & Curated Minimalist Architecture).",
+    "real_professional_photo_sections": [
+      {
+        "section": "Hero Principal Sidecar Card & Executive Bio Section",
+        "image_url": "https://images.unsplash.com/photo-1581065178047-8ee15951ede6?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwzfHxidXNpbmVzcyUyMHdvbWFuJTIwcG9ydHJhaXQlMjBwcm9mZXNzaW9uYWx8ZW58MHx8fHwxNzg4MzgyODY1fDA&ixlib=rb-4.1.0&q=85",
+        "alt_text": "Anjana Sara Abraham - Business Analysis and Transformation Professional",
+        "treatment": "High-fidelity professional portrait with subtle 1px border (border-white/20), warm-parchment caption tag, and rich contrast. Never occluded by dark blanket overlays.",
+        "role": "Human authority, trust anchor, executive face of the practice"
+      },
+      {
+        "section": "Alternate / Leadership Portrait in Advisory Context",
+        "image_url": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHdvbWFuJTIwcG9ydHJhaXQlMjBwcm9mZXNzaW9uYWx8ZW58MHx8fHwxNzg4MzgyODY1fDA&ixlib=rb-4.1.0&q=85",
+        "alt_text": "Executive advisory portrait - Anjana Sara Abraham",
+        "treatment": "Monochrome architectural backdrop, warm lighting, cropped tight for editorial presence",
+        "role": "Secondary credential card / speaking & advisory profile"
+      }
+    ],
+    "curated_architectural_assets": [
+      {
+        "section": "Fintech Transformation Case Study Header",
+        "image_url": "https://images.unsplash.com/photo-1462556791646-c201b8241a94?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzJ8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjBhcmNoaXRlY3R1cmUlMjBhYnN0cmFjdCUyMGdlb21ldHJ5JTIwZ2xhc3N8ZW58MHx8fHwxNzg4MzgyODY1fDA&ixlib=rb-4.1.0&q=85",
+        "description": "Low angle modern glass facade symbolizing transparent architecture and data scale",
+        "treatment": "Deep navy tint (bg-navy-950/40 mix), sharp aspect ratio 16:9, rounded-lg"
+      },
+      {
+        "section": "Enterprise Boardroom & Strategy Sessions",
+        "image_url": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA4Mzl8MHwxfHNlYXJjaHw0fHxidXNpbmVzcyUyMG1lZXRpbmclMjBib2FyZHJvb20lMjBtaW5pbWFsaXN0fGVufDB8fHx8MTc4ODM4Mjg3NXww&ixlib=rb-4.1.0&q=85",
+        "description": "Minimalist modern conference table with clean glass walls",
+        "treatment": "Restrained opacity with subtle contrast enhancement for case study backdrop"
+      }
+    ],
+    "generative_abstract_graphic_assets": {
+      "sections": [
+        "Manifesto Chapters (01-04)",
+        "Diagnostic Readiness Calculator",
+        "System Topology & Transformation Blueprint Diagrams"
+      ],
+      "asset_descriptions": [
+        "Interactive SVG data-flow matrix connecting 'Data Ingestion' → 'Semantic Layer' → 'Executive Action'.",
+        "BPMN process flow diagram showing legacy bottleneck elimination via animated nodes.",
+        "Interactive Before vs After transformation slider comparing operational cycle times.",
+        "Dynamic SVG spider/radar chart displaying enterprise capability across Strategy, Telemetry, Change Agility, and ROI Governance."
+      ],
+      "rationale": "Consulting and business analysis value is rooted in structured abstraction, logic diagrams, and data clarity. Generated interactive SVG charts communicate rigor 10x better than generic stock pictures."
+    }
+  },
+  "navigation_and_header_guidelines": {
+    "positioning": "Sticky z-50 top-0 w-full",
+    "surface": "Crystal Glass: backdrop-blur-xl bg-[#090D16]/80 border-b border-white/10",
+    "elements": [
+      { "label": "ANJANA SARA ABRAHAM", "type": "brand_logo", "style": "font-serif tracking-widest text-sm text-[#F3E8DC] font-semibold" },
+      { "label": "01 // PHILOSOPHY", "href": "#manifesto", "type": "nav_link" },
+      { "label": "02 // CASE STUDIES", "href": "#case-studies", "type": "nav_link" },
+      { "label": "03 // DIAGNOSTIC", "href": "#interactive-diagnostic-tool", "type": "nav_link" },
+      { "label": "04 // PERSPECTIVE", "href": "#executive-profile", "type": "nav_link" },
+      { "label": "ENGAGE", "href": "#consulting-engagement", "type": "cta_button", "style": "bg-teal-400 text-slate-950 hover:bg-teal-300 font-sans font-medium text-xs px-4 py-2 rounded-full transition-all" }
+    ],
+    "mobile_drawer": "Collapsible sheet drawer with backdrop blur and large typographic chapter links",
+    "data_testids": [
+      "main-header-nav",
+      "nav-brand-logo",
+      "nav-link-manifesto",
+      "nav-link-case-studies",
+      "nav-link-diagnostic",
+      "nav-link-perspective",
+      "nav-cta-engage",
+      "mobile-menu-toggle"
+    ]
+  },
+  "footer_guidelines": {
+    "surface": "bg-[#060910] border-t border-white/10 py-20 lg:py-28 text-slate-400",
+    "large_typographic_statement": {
+      "text": "TRANSFORMATION AT SCALE.",
+      "style": "text-4xl sm:text-6xl lg:text-7xl font-serif font-bold text-white/10 select-none tracking-tight"
+    },
+    "metadata": {
+      "location": "Global / Hybrid Advisory • London / New York / Remote",
+      "availability": "Accepting Select Q3/Q4 Strategic Advisory Engagements",
+      "legal": "© 2026 Anjana Sara Abraham. All rights reserved. Strategic Business Analysis & Transformation Architecture."
+    },
+    "data_testids": [
+      "main-footer",
+      "footer-availability-badge",
+      "footer-linkedin-link",
+      "footer-email-link"
+    ]
+  },
+  "instructions_to_main_agent": [
+    "Read this design_guidelines.json completely before modifying any code.",
+    "Do NOT use 'Inter', 'Roboto', 'Arial' for any headings or display text. Use 'Playfair Display' for headlines and 'IBM Plex Sans' for body and analytical UI.",
+    "Keep the primary background deep obsidian-navy (#090D16) with #0E1626 card surfaces and subtle 1px border strokes (border-white/10). Avoid generic full-screen gradients.",
+    "Implement the kinetic line-by-line masked text reveal in the hero using Framer Motion.",
+    "Implement the slow editorial marquee ribbon with continuous momentum.",
+    "Place the user's real professional portrait in the Hero Sidecar Card and Executive Profile section with high-contrast frame styling.",
+    "Use interactive SVG and data visualization components for the Transformation Manifesto chapters and Diagnostic Readiness Calculator.",
+    "All interactive elements, buttons, links, inputs, and major chapter headers MUST include their corresponding data-testid attribute as defined in this document.",
+    "Use Sonner toast notifications for the consultation inquiry form feedback.",
+    "Ensure total responsiveness from 360px mobile to 4K ultra-wide monitors."
+  ],
+  "UNIVERSAL GUIDELINES FOR MAIN AGENT": {
+    "avoid_ai_slop": "Never use centered cookie-cutter layouts or random tech gradients. Maintain strong left-aligned asymmetry and deliberate editorial tension.",
+    "transitions": "Never use 'transition: all'. Apply explicit transitions like 'transition: transform 0.2s ease, opacity 0.2s ease, border-color 0.2s ease'.",
+    "spacing": "Maintain generous breathing room: p-6 to p-10 on cards, gap-8 to gap-16 between sections.",
+    "color_contrast": "Ensure all text meets WCAG AA standards (4.5:1 minimum). Always specify explicit text colors for :hover and :focus states.",
+    "no_assistant_emojis": "Never use emoji characters like 🤖🧠💡🔮 for UI icons. Use Phosphor, Lucide, or Radix UI icons instead."
+  }
+}
