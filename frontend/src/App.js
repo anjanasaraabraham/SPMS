@@ -686,7 +686,6 @@ function App() {
       <header className="site-header" data-testid="main-header-nav">
         <div className="header-inner">
           <a className="brand" href="#home" onClick={handleNavClick} data-testid="nav-brand-logo">
-            <span className="brand-mark">ASA</span>
             <span className="brand-name">ANJANA SARA ABRAHAM</span>
           </a>
           <nav className="desktop-nav" aria-label="Primary navigation">
