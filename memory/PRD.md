@@ -36,6 +36,7 @@ Create and refine a premium, modern, responsive single-page portfolio for Anjana
 - Added My Resume linked to the supplied PDF and clear View Project buttons for Musafir and SPMS
 - Tightened vertical section pacing, moved Musafir and SPMS into equal columns, and made Bayer a separate full-width live-project spotlight
 - Updated Hero and About copy to first person
+- Removed the Hero visual header, coordinate labels and footer metadata so the uploaded profile photo remains a plain box
 
 ## Verification
 - Production frontend build compiled successfully

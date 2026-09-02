@@ -178,10 +178,6 @@ const Hero = () => {
             style={{ transform: `translate3d(${pointer.x}px, ${pointer.y}px, 0)` }}
           >
             <HeroGrid />
-            <div className="hero-visual-topline">
-              <span>PROFILE / 01</span>
-              <span>STRATEGIC PRACTICE</span>
-            </div>
             <div className="portrait-poster" data-testid="profile-image-slot">
               <img
                 className="portrait-image"
@@ -189,13 +185,6 @@ const Hero = () => {
                 alt="Anjana Sara Abraham"
                 data-testid="profile-image"
               />
-            </div>
-            <div className="hero-coordinate-label label-one">DATA / 03</div>
-            <div className="hero-coordinate-label label-two">DECISION / 07</div>
-            <div className="hero-coordinate-label label-three">ACTION / 12</div>
-            <div className="hero-visual-footer">
-              <span><Activity size={14} /> SYSTEMS THINKING</span>
-              <span>2026 / PORTFOLIO</span>
             </div>
           </div>
         </div>
