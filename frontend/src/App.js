@@ -185,16 +185,10 @@ const Hero = () => {
             <div className="portrait-poster" data-testid="profile-image-slot">
               <img
                 className="portrait-image"
-                src="https://customer-assets-m6fa6gv7.emergentagent.net/job_anjana-insights/artifacts/2x9r802f_WhatsApp%20Image%202026-08-04%20at%2012.54.06%20AM%20%281%29.webp"
+                src="https://customer-assets-m6fa6gv7.emergentagent.net/job_anjana-insights/artifacts/4vgqy68z_WhatsApp%20Image%202026-08-04%20at%2012.54.06%20AM%20%281%29.webp"
                 alt="Anjana Sara Abraham"
                 data-testid="profile-image"
               />
-              <div className="portrait-image-wash" aria-hidden="true" />
-              <span className="portrait-corner">PROFILE / REAL PERSON</span>
-              <div className="portrait-caption">
-                <strong>ANJANA<br />SARA<br />ABRAHAM</strong>
-                <span>Business Analysis<br />Transformation<br />Analytics</span>
-              </div>
             </div>
             <div className="hero-coordinate-label label-one">DATA / 03</div>
             <div className="hero-coordinate-label label-two">DECISION / 07</div>
@@ -420,6 +414,20 @@ const ProjectCard = ({ project, featured = false, live = false }) => (
         <span>TAKEAWAY</span>
         <p>{project.takeaway}</p>
       </div>
+      {project.slug === "musafir" && (
+        <div className="project-actions">
+          <a className="project-link-button" href="https://india-tourism-insights.ananya-pgpm27g.chatgpt.site/" target="_blank" rel="noreferrer" data-testid="musafir-view-project-link">
+            View Project <ExternalLink size={16} />
+          </a>
+        </div>
+      )}
+      {project.slug === "spms" && (
+        <div className="project-actions">
+          <a className="project-link-button" href="https://spms-inventory-hub.emergent.host/login" target="_blank" rel="noreferrer" data-testid="spms-view-project-link">
+            View Project <ExternalLink size={16} />
+          </a>
+        </div>
+      )}
     </article>
   </Reveal>
 );

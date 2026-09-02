@@ -1,30 +1,61 @@
 # Product Requirements Document
 
 ## Problem Statement
-Refine the existing Anjana Sara Abraham portfolio with actionable visual guidance and design architecture. The experience communicates analytical rigour, process thinking, and professional credibility without inventing experience, outcomes, clients, or achievements.
+Create and refine a premium, modern, responsive single-page portfolio for Anjana Sara Abraham that communicates business analysis, business transformation, analytics, strategy and digital transformation capability without inventing experience, outcomes, clients or achievements.
 
 ## Personas
-- Hiring managers evaluating business analysis, transformation, analytics, and strategy capability
-- Consulting and strategy professionals reviewing project thinking, process mapping, and communication quality
-- Potential enterprise collaborators looking for direct, professional engagement
+- Hiring managers evaluating business analysis, transformation, analytics and strategy capability
+- Consulting and strategy professionals reviewing project thinking, process mapping and communication quality
+- Potential collaborators looking for a direct, professional way to connect
 
 ## Architecture
-- React single-page application served by the existing frontend scaffold (`.js`/`.jsx`)
-- One fixed crystal-glass responsive header with anchor navigation and mobile drawer
-- CSS-led editorial motion: masked hero line reveal, IntersectionObserver section reveals, slow contained marquee ticker, and subtle pointer parallax
+- React single-page application served by the existing frontend scaffold
+- One fixed responsive header with anchor navigation and mobile menu
+- CSS-led editorial motion: masked hero line reveal, IntersectionObserver section reveals, contained marquee and subtle pointer parallax
 - Inline SVG coordinate grid and process diagrams communicating analytical logic
-- Direct `mailto:` and LinkedIn anchors; no database flow or invented mock portals
-- Design guidelines generated at `/app/design_guidelines.json` for seamless handoff
+- Direct `mailto:` and LinkedIn anchors; no database flow or stored contact submissions
+- Public uploaded portrait and resume PDF used as external asset URLs
 
-## Core Requested Edits & Design Guidance
-1. **Hero Profile Panel Only Portrait**: Use the uploaded professional portrait in the Hero profile panel (`.hero-visual` / `.portrait-poster`) only, with a premium deliberate crop (`object-cover`, upper-body focus, subtle 1px border `border-white/20`, no fictional replacement anywhere else).
-2. **Reduced Vertical Gaps**: Calibrate excessive section paddings (from 146px/170px down to ~82px on desktop and ~56px on mobile) and inner module spacing (from 62px to 36px) to maintain intentional editorial breathing room without dead space.
-3. **Projects Layout Architecture**:
-   - **Musafir & SPMS**: Side-by-side as two equal project cards (`grid-cols-1 md:grid-cols-2`) with balanced visual weight, tags, flow diagrams, and takeaways.
-   - **Bayer**: Separate, more prominent ongoing live-project treatment (full-width spotlight card, pulsating live status badge, distinct sapphire-teal elevation, and "LISTEN → ANALYZE → RECOMMEND" flow).
-4. **Hero Resume CTA**: Add a prominent "My Resume" action in the Hero actions group with distinct icon and test ID `hero-resume-button`.
-5. **First-Person Narrative Voice**: Update intro and summary statements across Hero and About to first person ("I am an impact-oriented professional...", "My work sits at the intersection...", "I bring structure...") while preserving all authentic data.
-6. **Preserved Aesthetic & Integrity**: Deep navy palette (`#090D16`, `#0E1626`), Playfair Display + IBM Plex Sans, restrained teal/lavender/warm accents, asymmetric sticky rail (01 to 07), and zero invented facts.
+## Core Requirements
+- One continuous page with Home, About, Experience, Projects, Skills, Education, Achievements and Contact sections
+- Deep navy editorial visual system with restrained teal, lavender and warm-parchment accents
+- Exact supplied professional history, projects, education, certifications, achievements, leadership and languages
+- Musafir and SPMS shown side by side; Bayer shown as a separate prominent ongoing live project without invented outcomes
+- First-person introduction and About narrative
+- Plain portrait box in the Hero profile panel only
+- Clear View Project buttons for Musafir and SPMS linking to their supplied public destinations
+- Prominent My Resume action linked to the supplied public PDF
+- Responsive desktop/mobile layout with unique data-testid coverage for interactive and critical elements
 
-## Status: Design Guidelines Complete
-- `/app/design_guidelines.json` generated and validated. Ready for implementation.
+## Implemented 2026-09-02
+- Built the complete editorial single-page portfolio experience and responsive navigation
+- Added animated hero headline, metrics, project process diagrams, skill groups, education ledger, achievement/leadership sections and direct contact actions
+- Added scroll reveals, pointer-based hero parallax, smooth anchor scrolling and a mobile navigation panel without using framer-motion
+- Added award-oriented dark editorial typography using Playfair Display and IBM Plex Sans
+- Replaced the previous identity treatment with Anjana’s uploaded portrait in a simple bordered Hero box with no overlay text or labels
+- Added My Resume linked to the supplied PDF and clear View Project buttons for Musafir and SPMS
+- Tightened vertical section pacing, moved Musafir and SPMS into equal columns, and made Bayer a separate full-width live-project spotlight
+- Updated Hero and About copy to first person
+
+## Verification
+- Production frontend build compiled successfully
+- Uploaded portrait loaded with a non-zero natural image size
+- Supplied Musafir and SPMS URLs are present on the correct View Project links; destination pages were crawled successfully
+- Desktop layout assertion: one fixed header, no text behind header, no empty holes, no overlap, no clipped text, no broken images and no horizontal overflow
+- Mobile check: one fixed header, no horizontal overflow, no broken images and portrait visible
+
+## Prioritised Backlog
+### P0
+- No known P0 blockers after the latest responsive browser check
+
+### P1
+- Add optional project deep-dive states only if the owner provides additional approved project material
+
+### P2
+- Add a restrained print stylesheet for a one-page portfolio summary
+- Add a lightweight theme preference only if a second approved visual direction is requested
+
+## Next Tasks
+1. Keep the approved portrait and resume asset links current if the public files change.
+2. Add deeper approved case-study notes only when the owner provides them.
+3. Re-run the preview flow after any content or asset replacement.
