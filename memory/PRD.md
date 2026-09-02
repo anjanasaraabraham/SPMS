@@ -32,6 +32,7 @@ Create a premium, modern, responsive single-page portfolio for Anjana Sara Abrah
 - Added scroll reveals, pointer-based hero parallax, smooth anchor scrolling and a mobile navigation panel without using framer-motion
 - Added award-oriented dark editorial typography using Playfair Display and IBM Plex Sans
 - No uploaded profile asset was returned by the asset lookup; the hero therefore uses a deliberate ASA identity poster as a **MOCKED PROFILE IMAGE SLOT**, never a fictional person
+- Removed the About pull-quote paragraph and its surrounding wrapper so the remaining About content fills the section width
 
 ## Prioritised Backlog
 ### P0

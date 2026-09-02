@@ -233,10 +233,6 @@ const About = () => (
           />
         </Reveal>
         <div className="about-grid">
-          <Reveal className="about-statement" delay="reveal-delay-1">
-            <p className="pull-quote" data-testid="about-statement">Business needs become meaningful when the people, process and data around them are understood together.</p>
-            <span className="quote-mark">“</span>
-          </Reveal>
           <Reveal className="about-body" delay="reveal-delay-2">
             <p data-testid="about-summary">Anjana Sara Abraham is an engineering graduate and PGCM student at Great Lakes Institute of Management, Gurgaon. Her work sits at the intersection of business analysis, requirements gathering, process improvement, stakeholder management, analytics and technology-enabled transformation.</p>
             <p>She brings structure to ambiguous problems: listening to what a business needs, mapping how work happens today, finding the friction, and shaping a solution that can move from conversation to implementation.</p>
