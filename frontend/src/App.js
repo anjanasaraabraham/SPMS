@@ -147,7 +147,7 @@ const Hero = () => {
           </h1>
           <div className="hero-bottom-grid">
             <p className="hero-intro" data-testid="hero-intro">
-              Impact-oriented professional skilled in business analysis, requirements gathering and stakeholder management, with strong analytical abilities to translate business needs into actionable solutions and support technology-enabled transformation.
+              I am an impact-oriented professional skilled in business analysis, requirements gathering and stakeholder management, with strong analytical abilities to translate business needs into actionable solutions and support technology-enabled transformation.
             </p>
             <div className="hero-scroll-note" data-testid="hero-scroll-note">
               <ArrowDown size={16} strokeWidth={1.5} />
@@ -157,6 +157,9 @@ const Hero = () => {
           <div className="hero-actions">
             <a className="button button-primary" href="#projects" data-testid="hero-view-work-link">
               View My Work <ArrowUpRight size={16} />
+            </a>
+            <a className="button button-resume" href="https://customer-assets-m6fa6gv7.emergentagent.net/job_anjana-insights/artifacts/ebzlqqqg_Anjana%20Sara%20CV%20Accenture%20ATCI%20CL10.pdf" target="_blank" rel="noreferrer" data-testid="hero-resume-link">
+              My Resume <ExternalLink size={16} />
             </a>
             <a className="button button-ghost" href="#contact" data-testid="hero-connect-link">
               Let's Connect <MoveRight size={16} />
@@ -180,10 +183,18 @@ const Hero = () => {
               <span>STRATEGIC PRACTICE</span>
             </div>
             <div className="portrait-poster" data-testid="profile-image-slot">
-              <div className="poster-monogram">ASA</div>
-              <div className="poster-name">ANJANA<br />SARA<br />ABRAHAM</div>
-              <div className="poster-role">Business Analysis<br />Transformation<br />Analytics</div>
-              <div className="poster-note">Professional portrait<br />ready to place</div>
+              <img
+                className="portrait-image"
+                src="https://customer-assets-m6fa6gv7.emergentagent.net/job_anjana-insights/artifacts/2x9r802f_WhatsApp%20Image%202026-08-04%20at%2012.54.06%20AM%20%281%29.webp"
+                alt="Anjana Sara Abraham"
+                data-testid="profile-image"
+              />
+              <div className="portrait-image-wash" aria-hidden="true" />
+              <span className="portrait-corner">PROFILE / REAL PERSON</span>
+              <div className="portrait-caption">
+                <strong>ANJANA<br />SARA<br />ABRAHAM</strong>
+                <span>Business Analysis<br />Transformation<br />Analytics</span>
+              </div>
             </div>
             <div className="hero-coordinate-label label-one">DATA / 03</div>
             <div className="hero-coordinate-label label-two">DECISION / 07</div>
@@ -234,8 +245,8 @@ const About = () => (
         </Reveal>
         <div className="about-grid">
           <Reveal className="about-body" delay="reveal-delay-2">
-            <p data-testid="about-summary">Anjana Sara Abraham is an engineering graduate and PGCM student at Great Lakes Institute of Management, Gurgaon. Her work sits at the intersection of business analysis, requirements gathering, process improvement, stakeholder management, analytics and technology-enabled transformation.</p>
-            <p>She brings structure to ambiguous problems: listening to what a business needs, mapping how work happens today, finding the friction, and shaping a solution that can move from conversation to implementation.</p>
+            <p data-testid="about-summary">I am an engineering graduate and PGCM student at Great Lakes Institute of Management, Gurgaon. My work sits at the intersection of business analysis, requirements gathering, process improvement, stakeholder management, analytics and technology-enabled transformation.</p>
+            <p>I bring structure to ambiguous problems: listening to what a business needs, mapping how work happens today, finding the friction, and shaping a solution that can move from conversation to implementation.</p>
             <div className="focus-list" data-testid="about-focus-list">
               <span><Search size={15} /> Understand the problem</span>
               <span><Workflow size={15} /> Redesign the process</span>
@@ -380,8 +391,8 @@ const projectItems = [
   },
 ];
 
-const ProjectCard = ({ project, featured = false }) => (
-  <Reveal className={`project-card ${featured ? "project-card-featured" : ""}`}>
+const ProjectCard = ({ project, featured = false, live = false }) => (
+  <Reveal className={`project-card ${featured ? "project-card-featured" : ""} ${live ? "project-card-live" : ""}`}>
     <article data-testid={`project-card-${project.slug}`}>
       <div className="project-card-header">
         <span className="project-number">{project.number}</span>
@@ -437,9 +448,9 @@ const Projects = () => (
           <span>SCROLL THROUGH THE LOGIC <ArrowDown size={14} /></span>
         </div>
         <div className="project-layout" data-testid="project-list">
-          <ProjectCard project={projectItems[0]} featured />
+          <ProjectCard project={projectItems[0]} />
           <ProjectCard project={projectItems[1]} />
-          <ProjectCard project={projectItems[2]} />
+          <ProjectCard project={projectItems[2]} live />
         </div>
       </div>
     </div>
